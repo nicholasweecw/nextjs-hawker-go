@@ -31,3 +31,15 @@ nav {
 .banner > h1 {
   @apply text-5xl;
 }
+
+.searchbar {
+  @apply w-[50%];
+}
+
+.search-input {
+  @apply w-full h-[48px] pl-12 p-4 rounded-md max-sm:rounded-full bg-gray-200 outline-none cursor-pointer text-sm;
+}
+
+.search-option {
+  @apply cursor-default select-none py-2 pl-10 pr-4;
+}
