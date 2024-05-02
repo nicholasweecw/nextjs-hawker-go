@@ -37,7 +37,7 @@ nav {
 }
 
 .search-input {
-  @apply w-full h-[48px] pl-12 p-4 rounded-md max-sm:rounded-full bg-gray-200 outline-none cursor-pointer text-sm;
+  @apply w-full h-[48px] p-4 rounded-md max-sm:rounded-full bg-gray-200 outline-none cursor-pointer text-sm;
 }
 
 .search-option {
