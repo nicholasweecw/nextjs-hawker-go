@@ -36,7 +36,7 @@ const Searchbar = () => {
     // Create a new URLSearchParams object using the current URL search parameters
     const searchParams = new URLSearchParams(window.location.search);
 
-    // Update or delete the 'model' search parameter based on the 'model' value
+    // Update or delete the 'hawkerCentre' search parameter based on the 'hawkerCentre' value
     if (hawkerCentre) {
       searchParams.set("hawkerCentre", hawkerCentre);
     } else {
@@ -44,9 +44,7 @@ const Searchbar = () => {
     }
 
     // Generate the new pathname with the updated search parameters
-    const newPathname = `${
-      window.location.pathname
-    }?${searchParams.toString()}`;
+    const newPathname = `search?${searchParams.toString()}`;
 
     router.push(newPathname);
   };

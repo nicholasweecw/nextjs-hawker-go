@@ -1,11 +1,8 @@
 import Image from "next/image";
-import { Searchbar } from "./components";
+import { HawkerCard, Searchbar } from "./components";
 import { fetchHawkerCentres } from "../../utils";
 
 export default async function Home() {
-  const allHawkerCentres = await fetchHawkerCentres();
-
-  console.log(allHawkerCentres.result.records);
   return (
     <div className="hero">
       <div className="banner">
