@@ -18,7 +18,7 @@ const SearchPage = async () => {
         <section>
           <div className="home__cars-wrapper">
             {allHawkerCentres?.map((hawker) => (
-              <HawkerCard hawkerCentre={hawker} />
+              <HawkerCard key={hawker.name_of_centre} hawkerCentre={hawker} />
             ))}
           </div>
         </section>
