@@ -7,8 +7,6 @@ const SearchPage = async () => {
 
   const allHawkerCentres = response.result.records;
 
-  console.log(allHawkerCentres);
-
   const isDataEmpty =
     !Array.isArray(allHawkerCentres) ||
     allHawkerCentres.length < 1 ||
