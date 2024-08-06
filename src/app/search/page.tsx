@@ -2,8 +2,9 @@ import React from "react";
 import { fetchHawkerCentres } from "../../../utils";
 import { HawkerCard, Searchbar } from "../components";
 import { hawkerCentres } from "../constants";
+import { SearchProps } from "../../../types";
 
-const SearchPage = async ({ searchParams }) => {
+const SearchPage = async ({ searchParams }: SearchProps) => {
   const response = await fetchHawkerCentres({
     hawkerCentre: searchParams.hawkerCentre || "",
   });

@@ -12,3 +12,7 @@ export interface HawkerCentreProps {
 export interface FilterProps {
   hawkerCentre: string;
 }
+
+export interface SearchProps {
+  searchParams: FilterProps;
+}
