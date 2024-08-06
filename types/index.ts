@@ -8,3 +8,7 @@ export interface HawkerCentreProps {
   no_of_cooked_food_stalls: string;
   no_of_mkt_produce_stalls: string;
 }
+
+export interface FilterProps {
+  hawkerCentre: string;
+}

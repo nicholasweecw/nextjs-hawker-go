@@ -70,34 +70,43 @@ const Searchbar = () => {
             afterLeave={() => setQuery("")} // Reset the search query after the transition completes
           >
             <Combobox.Options>
-              {filteredHawkerCentres.length === 0 && query !== "" ? (
-                <Combobox.Option value={query} className="search-option">
-                  No results found
+              {/* {filteredHawkerCentres.length === 0 && query !== "" ? ( */}
+
+              {query !== "" ? (
+                <Combobox.Option
+                  value={query}
+                  className={({ active }) =>
+                    `relative search-option
+              ${active ? "bg-blue-600 text-white" : "text-gray-900"}`
+                  }
+                >
+                  {query}
                 </Combobox.Option>
               ) : (
-                filteredHawkerCentres.map((hawkerCentre) => (
-                  <Combobox.Option
-                    key={hawkerCentre}
-                    className={({ active }) =>
-                      `relative search-option
-                  ${active ? "bg-blue-600 text-white" : "text-gray-900"}`
-                    }
-                    value={hawkerCentre}
-                  >
-                    {({ active, selected }) => (
-                      <li
-                      /* className={`${
-                          active
-                            ? "bg-blue-500 text-white"
-                            : "bg-white text-black"
-                        }`} */
-                      >
-                        {selected}
-                        {hawkerCentre}
-                      </li>
-                    )}
-                  </Combobox.Option>
-                ))
+                <></>
+                // filteredHawkerCentres.map((hawkerCentre) => (
+                //   <Combobox.Option
+                //     key={hawkerCentre}
+                //     className={({ active }) =>
+                //       `relative search-option
+                //   ${active ? "bg-blue-600 text-white" : "text-gray-900"}`
+                //     }
+                //     value={hawkerCentre}
+                //   >
+                //     {({ active, selected }) => (
+                //       <li
+                //       /* className={`${
+                //           active
+                //             ? "bg-blue-500 text-white"
+                //             : "bg-white text-black"
+                //         }`} */
+                //       >
+                //         {selected}
+                //         {hawkerCentre}
+                //       </li>
+                //     )}
+                //   </Combobox.Option>
+                // ))
               )}
             </Combobox.Options>
           </Transition>

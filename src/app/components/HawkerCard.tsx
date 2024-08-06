@@ -23,7 +23,7 @@ const HawkerCard = ({ hawkerCentre }: HawkerCardProps) => {
   return (
     <div className="hawker-card group">
       <div className="hawker-card__content">
-        <div className="mr-3 my-auto h-50 object-contain">
+        {/* <div className="mr-3 my-auto h-50 object-contain">
           <Image
             src="/eagle.png"
             width={50}
@@ -33,7 +33,7 @@ const HawkerCard = ({ hawkerCentre }: HawkerCardProps) => {
             priority
             className="object-contain"
           />
-        </div>
+        </div> */}
 
         <div className="hawker-card__content-info">
           <h2 className="hawker-card__content-title">

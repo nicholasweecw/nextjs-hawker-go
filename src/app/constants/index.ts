@@ -99,4 +99,11 @@ export const hawkerCentres = [
   "Blks 22A/B Havelock Road",
   "Blks 79/79A Circuit Road",
   "Blks 91/92 Whampoa Drive",
+  "Chinatown Market",
+  "Chong Pang Market & Food Centre",
+  "Hong Lim Market & Food Centre",
+  "Kovan Market & Food Centre",
+  "Pek Kio Market & Food Centre",
+  "People's Park Food Centre",
+  "Tekka Market",
 ];

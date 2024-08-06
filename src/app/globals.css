@@ -67,3 +67,7 @@ nav {
 .hawker-card_content-closure {
   @apply leading-[26px];
 }
+
+.search-page__searchbar {
+  @apply ml-5 gap-3;
+}
