@@ -9,8 +9,6 @@ interface HawkerCardProps {
 }
 
 const HawkerCard = ({ hawkerCentre }: HawkerCardProps) => {
-  const { Name, ADDRESSSTREETNAME } = hawkerCentre;
-
   return (
     <div className="hawker-card group">
       <div className="hawker-card__content">
@@ -28,11 +26,11 @@ const HawkerCard = ({ hawkerCentre }: HawkerCardProps) => {
 
         <div className="hawker-card__content-info">
           <h2 className="hawker-card__content-title">
-            {Name}
+            {hawkerCentre.Name}
             <br />
           </h2>
           <h3 className="hawker-card_content-location">
-            {"Location:"} {ADDRESSSTREETNAME}
+            {"Location:"} {hawkerCentre.ADDRESSSTREETNAME}
           </h3>
           <h3 className="hawker-card_content-closure">
             {"Hours: "}

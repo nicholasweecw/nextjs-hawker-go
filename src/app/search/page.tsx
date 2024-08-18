@@ -4,7 +4,6 @@ import { HawkerCard, Searchbar } from "../components";
 import { hawkerCentres } from "../constants";
 import { SearchProps } from "../../../types";
 import allHawkerCentres from "../constants/csvjson.json";
-import filteredHawkerCentres from "../components/Searchbar";
 
 const SearchPage = async ({ searchParams }: SearchProps) => {
   // const response = await fetchHawkerCentres({
@@ -14,11 +13,9 @@ const SearchPage = async ({ searchParams }: SearchProps) => {
   // const allHawkerCentres = response.result.records;
 
   const isDataEmpty =
-    !Array.isArray(filteredHawkerCentres) ||
-    filteredHawkerCentres.length < 1 ||
-    !filteredHawkerCentres;
-
-  console.log(filteredHawkerCentres.map((hawker) => hawker.Name));
+    !Array.isArray(allHawkerCentres) ||
+    allHawkerCentres.length < 1 ||
+    !allHawkerCentres;
 
   return (
     <>
