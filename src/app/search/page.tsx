@@ -3,18 +3,22 @@ import { fetchHawkerCentres } from "../../../utils";
 import { HawkerCard, Searchbar } from "../components";
 import { hawkerCentres } from "../constants";
 import { SearchProps } from "../../../types";
+import allHawkerCentres from "../constants/csvjson.json";
+import filteredHawkerCentres from "../components/Searchbar";
 
 const SearchPage = async ({ searchParams }: SearchProps) => {
-  const response = await fetchHawkerCentres({
-    hawkerCentre: searchParams.hawkerCentre || "",
-  });
+  // const response = await fetchHawkerCentres({
+  //   hawkerCentre: searchParams.hawkerCentre || "",
+  // });
 
-  const allHawkerCentres = response.result.records;
+  // const allHawkerCentres = response.result.records;
 
   const isDataEmpty =
-    !Array.isArray(allHawkerCentres) ||
-    allHawkerCentres.length < 1 ||
-    !allHawkerCentres;
+    !Array.isArray(filteredHawkerCentres) ||
+    filteredHawkerCentres.length < 1 ||
+    !filteredHawkerCentres;
+
+  console.log(filteredHawkerCentres.map((hawker) => hawker.Name));
 
   return (
     <>
@@ -26,7 +30,7 @@ const SearchPage = async ({ searchParams }: SearchProps) => {
         <section>
           <div className="home__cars-wrapper">
             {allHawkerCentres?.map((hawker) => (
-              <HawkerCard key={hawker.name_of_centre} hawkerCentre={hawker} />
+              <HawkerCard key={hawker.Name} hawkerCentre={hawker} />
             ))}
           </div>
         </section>
@@ -35,7 +39,6 @@ const SearchPage = async ({ searchParams }: SearchProps) => {
           <h2 className="text-black text-xl font-bold ml-5 mt-5">
             Oops, no results
           </h2>
-          <p>{allHawkerCentres?.message}</p>
         </div>
       )}
     </>
