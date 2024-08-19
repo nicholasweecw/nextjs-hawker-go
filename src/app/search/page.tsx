@@ -12,10 +12,21 @@ const SearchPage = async ({ searchParams }: SearchProps) => {
 
   // const allHawkerCentres = response.result.records;
 
+  const query = searchParams.hawkerCentre || "";
+
+  const filteredHawkerCentres =
+    query === ""
+      ? allHawkerCentres
+      : allHawkerCentres.filter((hawker) =>
+          hawker.Name.toLowerCase()
+            .replace(/\s+/g, "")
+            .includes(query.toLowerCase().replace(/\s+/g, ""))
+        );
+
   const isDataEmpty =
-    !Array.isArray(allHawkerCentres) ||
-    allHawkerCentres.length < 1 ||
-    !allHawkerCentres;
+    !Array.isArray(filteredHawkerCentres) ||
+    filteredHawkerCentres.length < 1 ||
+    !filteredHawkerCentres;
 
   return (
     <>
@@ -26,7 +37,7 @@ const SearchPage = async ({ searchParams }: SearchProps) => {
       {!isDataEmpty ? (
         <section>
           <div className="home__cars-wrapper">
-            {allHawkerCentres?.map((hawker) => (
+            {filteredHawkerCentres?.map((hawker) => (
               <HawkerCard key={hawker.Name} hawkerCentre={hawker} />
             ))}
           </div>

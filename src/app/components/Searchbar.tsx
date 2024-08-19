@@ -13,14 +13,14 @@ const Searchbar = () => {
 
   const router = useRouter();
 
-  const filteredHawkerCentres =
-    query === ""
-      ? allHawkerCentres
-      : allHawkerCentres.filter((hawker) =>
-          hawker.Name.toLowerCase()
-            .replace(/\s+/g, "")
-            .includes(query.toLowerCase().replace(/\s+/g, ""))
-        );
+  // const filteredHawkerCentres =
+  //   query === ""
+  //     ? allHawkerCentres
+  //     : allHawkerCentres.filter((hawker) =>
+  //         hawker.Name.toLowerCase()
+  //           .replace(/\s+/g, "")
+  //           .includes(query.toLowerCase().replace(/\s+/g, ""))
+  //       );
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -70,7 +70,22 @@ const Searchbar = () => {
             afterLeave={() => setQuery("")} // Reset the search query after the transition completes
           >
             <Combobox.Options>
-              {filteredHawkerCentres.length === 0 && query !== "" ? (
+              {query !== "" ? (
+                <Combobox.Option
+                  value={query}
+                  className={({ active }) =>
+                    `relative search-option
+              ${active ? "bg-blue-600 text-white" : "text-gray-900"}`
+                  }
+                >
+                  {query}
+                </Combobox.Option>
+              ) : (
+                <Combobox.Option value={query} className="search-option">
+                  No results found
+                </Combobox.Option>
+              )}
+              {/* {filteredHawkerCentres.length === 0 && query !== "" ? (
                 <Combobox.Option value={query} className="search-option">
                   No results found
                 </Combobox.Option>
@@ -87,7 +102,7 @@ const Searchbar = () => {
                     {hawker.Name}
                   </Combobox.Option>
                 ))
-              )}
+              )} */}
             </Combobox.Options>
           </Transition>
         </div>
