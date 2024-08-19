@@ -11,7 +11,6 @@ export default async function Home() {
         <h1>HAWKERGO</h1>
       </div>
       <Searchbar />
-      <Counter />
     </div>
   );
 }
