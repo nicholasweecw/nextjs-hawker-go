@@ -6,12 +6,6 @@ import { SearchProps } from "../../../types";
 import allHawkerCentres from "../constants/csvjson.json";
 
 const SearchPage = async ({ searchParams }: SearchProps) => {
-  // const response = await fetchHawkerCentres({
-  //   hawkerCentre: searchParams.hawkerCentre || "",
-  // });
-
-  // const allHawkerCentres = response.result.records;
-
   const query = searchParams.hawkerCentre || "";
 
   const filteredHawkerCentres =

@@ -34,10 +34,10 @@ const HawkerCard = ({ hawkerCentre }: HawkerCardProps) => {
               <br />
             </h2>
             <h3 className="hawker-card_content-location">
-              {"Location:"} {hawkerCentre.ADDRESSSTREETNAME}
+              Location: {hawkerCentre.ADDRESS_MYENV}
             </h3>
             <h3 className="hawker-card_content-closure">
-              {"Hours: "}
+              Hours:{" "}
               <span className="text-red-500 font-semibold">{"Closed"}</span>
             </h3>
           </div>
