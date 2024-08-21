@@ -63,7 +63,10 @@ const HawkerPage = async () => {
             <h5 className="hawker-crowd">
               <span className="font-bold">{"Crowd Levels: "}</span>
             </h5>
-            <p className="hawker-desc">{hawker.DESCRIPTION_MYENV}</p>
+            <p className="hawker-desc">
+              <span className="font-bold">{"Description: "}</span>
+              <p className="leading-tight">{hawker.DESCRIPTION_MYENV}</p>
+            </p>
           </div>
         </div>
       </div>

@@ -92,7 +92,3 @@ nav {
 .hawker-deets {
   @apply leading-7 flex flex-col p-6 justify-center items-start text-black bg-blue-100 rounded-3xl;
 }
-
-.hawker-desc {
-  @apply leading-tight;
-}
