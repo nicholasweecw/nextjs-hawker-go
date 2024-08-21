@@ -5,7 +5,7 @@ export async function fetchHawkerCentres() {
   // const { hawkerCentre } = filters;
 
   const response = await fetch(
-    `https://data.gov.sg/api/action/datastore_search?resource_id=d_bda4baa634dd1cc7a6c7cad5f19e2d68`,
+    `https://data.gov.sg/api/action/datastore_search?resource_id=d_bda4baa634dd1cc7a6c7cad5f19e2d68&limit=1000`,
     {
       method: "GET",
       headers: {},

@@ -22,7 +22,6 @@ const HawkerCard = ({ hawkerCentre }: HawkerCardProps) => {
               width={150}
               height={100}
               alt="Hawker Centre"
-              objectFit="cover"
               priority
               className="object-contain"
             />

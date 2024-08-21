@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import React from "react";
 import json from "../../constants/csvjson.json";
 import { fetchHawkerCentres } from "../../../../utils";
+import Image from "next/image";
 
 const HawkerPage = async () => {
   // Hawker Centre deets from JSON
@@ -11,15 +12,22 @@ const HawkerPage = async () => {
 
   const hawkerName = decodeURIComponent(pathname.slice(15));
 
-  const hawker = json.filter((hawker) => hawker.Name === hawkerName)[0];
+  const hawker = json.filter((hawker) =>
+    hawker.Name.toLowerCase()
+      .replace(/\s+/g, "")
+      .includes(hawkerName.toLowerCase().replace(/\s+/g, ""))
+  )[0];
 
   // Hawker Centre Cleaning Dates API
   const response = await fetchHawkerCentres();
 
   const allHawkerCentres = response.result.records;
 
-  const cleaningHawker = allHawkerCentres.filter(
-    (h: any) => h.name === hawkerName
+  const cleaningHawker = allHawkerCentres.filter((h: any) =>
+    h.name
+      .toLowerCase()
+      .replace(/\s+/g, "")
+      .includes(hawkerName.toLowerCase().replace(/\s+/g, ""))
   )[0];
 
   console.log(cleaningHawker);
@@ -30,7 +38,12 @@ const HawkerPage = async () => {
         <h1 className="hawker-name">{hawker.Name}</h1>
         <div className="hawker-info-content">
           <div className="hawker-img">
-            <img src={hawker.PHOTOURL} alt={hawker.Name} />
+            <Image
+              src={hawker.PHOTOURL}
+              alt={hawker.Name}
+              fill={true}
+              sizes="100vw"
+            />
           </div>
           <div className="hawker-deets">
             <h2 className="hawker-location">

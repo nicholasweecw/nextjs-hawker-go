@@ -17,11 +17,11 @@ nav {
 }
 
 .sign-in-btn {
-  @apply px-5 py-3 bg-gray-400 rounded-full text-white;
+  @apply px-5 py-3 bg-blue-400 rounded-full text-white;
 }
 
 .hero {
-  @apply flex flex-col justify-center items-center h-[89vh];
+  @apply flex flex-col justify-center items-center h-[89vh] gap-5;
 }
 
 .banner {
@@ -86,9 +86,15 @@ nav {
 }
 
 .hawker-img {
-  @apply w-1/2;
+  position: relative !important;
+  width: 30%;
+}
+
+.hawker-img Image {
+  object-fit: cover;
+  width: 100%;
 }
 
 .hawker-deets {
-  @apply leading-7 flex flex-col p-6 justify-center items-start text-black bg-blue-100 rounded-3xl;
+  @apply w-[70%] leading-7 flex flex-col p-6 justify-center items-start text-black bg-blue-100 rounded-3xl;
 }
