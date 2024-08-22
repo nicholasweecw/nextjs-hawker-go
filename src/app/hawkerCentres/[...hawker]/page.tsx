@@ -30,7 +30,55 @@ const HawkerPage = async () => {
       .includes(hawkerName.toLowerCase().replace(/\s+/g, ""))
   )[0];
 
-  console.log(cleaningHawker);
+  const today = new Date();
+  // const dd = String(today.getDate()).padStart(2, "0");
+  // const mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+  // const yyyy = today.getFullYear();
+
+  // const todayStr = yyyy + "-" + mm + "-" + dd;
+
+  const cleanDateList = [
+    cleaningHawker.q1_cleaningstartdate,
+    cleaningHawker.q1_cleaningenddate,
+    cleaningHawker.q2_cleaningstartdate,
+    cleaningHawker.q2_cleaningenddate,
+    cleaningHawker.q3_cleaningstartdate,
+    cleaningHawker.q3_cleaningenddate,
+    cleaningHawker.q4_cleaningstartdate,
+    cleaningHawker.q4_cleaningenddate,
+  ];
+
+  cleanDateList.map((date) => {
+    if (date === "TBC") {
+      cleanDateList[cleanDateList.indexOf(date)] = new Date("1999-01-01");
+    } else {
+      let dateList = date.split("/");
+      dateList[0] = dateList[0].padStart(2, "0");
+      dateList[1] = dateList[1].padStart(2, "0");
+      let dateStr = dateList.reverse().join("-");
+      let dateObj = new Date(dateStr);
+      cleanDateList[cleanDateList.indexOf(date)] = dateObj;
+    }
+  });
+
+  console.log(cleanDateList);
+
+  // const now = new Date("2024-10-08");
+
+  // if (
+  //   (now.getTime() >= cleanDateList[0].getTime() &&
+  //     now.getTime() <= cleanDateList[1].getTime()) ||
+  //   (now.getTime() >= cleanDateList[2].getTime() &&
+  //     now.getTime() <= cleanDateList[3].getTime()) ||
+  //   (now.getTime() >= cleanDateList[4].getTime() &&
+  //     now.getTime() <= cleanDateList[5].getTime()) ||
+  //   (now.getTime() >= cleanDateList[6].getTime() &&
+  //     now.getTime() <= cleanDateList[7].getTime())
+  // ) {
+  //   console.log("The date falls between the start and end dates.");
+  // } else {
+  //   console.log("The date does not fall between the start and end dates.");
+  // }
 
   return (
     <>
@@ -52,7 +100,18 @@ const HawkerPage = async () => {
             </h2>
             <h3 className="hawker-closure">
               <span className="font-bold">{"Hours: "}</span>
-              <span className="text-red-500 font-semibold">{"Closed"}</span>
+              {(today.getTime() >= cleanDateList[0].getTime() &&
+                today.getTime() <= cleanDateList[1].getTime()) ||
+              (today.getTime() >= cleanDateList[2].getTime() &&
+                today.getTime() <= cleanDateList[3].getTime()) ||
+              (today.getTime() >= cleanDateList[4].getTime() &&
+                today.getTime() <= cleanDateList[5].getTime()) ||
+              (today.getTime() >= cleanDateList[6].getTime() &&
+                today.getTime() <= cleanDateList[7].getTime()) ? (
+                <span className="text-red-500 font-semibold">{"Closed"}</span>
+              ) : (
+                <span className="text-green-400 font-semibold">{"Open"}</span>
+              )}
             </h3>
             <h4 className="hawker-cleaning">
               <span className="font-bold">{"Cleaning Dates: "}</span>
