@@ -2,7 +2,6 @@
 
 import { usePathname } from "next/navigation";
 import React from "react";
-import json from "../../constants/csvjson.json";
 import { fetchHawkerCentres } from "../../../../utils";
 import Image from "next/image";
 
@@ -11,12 +10,6 @@ const HawkerPage = async () => {
   const pathname = usePathname();
 
   const hawkerName = decodeURIComponent(pathname.slice(15));
-
-  const hawker = json.filter((hawker) =>
-    hawker.Name.toLowerCase()
-      .replace(/\s+/g, "")
-      .includes(hawkerName.toLowerCase().replace(/\s+/g, ""))
-  )[0];
 
   // Hawker Centre Cleaning Dates API
   const response = await fetchHawkerCentres();
@@ -31,11 +24,8 @@ const HawkerPage = async () => {
   )[0];
 
   const today = new Date();
-  // const dd = String(today.getDate()).padStart(2, "0");
-  // const mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
-  // const yyyy = today.getFullYear();
 
-  // const todayStr = yyyy + "-" + mm + "-" + dd;
+  // const now = new Date("2024-10-08");
 
   const cleanDateList = [
     cleaningHawker.q1_cleaningstartdate,
@@ -61,32 +51,15 @@ const HawkerPage = async () => {
     }
   });
 
-  // const now = new Date("2024-10-08");
-
-  // if (
-  //   (now.getTime() >= cleanDateList[0].getTime() &&
-  //     now.getTime() <= cleanDateList[1].getTime()) ||
-  //   (now.getTime() >= cleanDateList[2].getTime() &&
-  //     now.getTime() <= cleanDateList[3].getTime()) ||
-  //   (now.getTime() >= cleanDateList[4].getTime() &&
-  //     now.getTime() <= cleanDateList[5].getTime()) ||
-  //   (now.getTime() >= cleanDateList[6].getTime() &&
-  //     now.getTime() <= cleanDateList[7].getTime())
-  // ) {
-  //   console.log("The date falls between the start and end dates.");
-  // } else {
-  //   console.log("The date does not fall between the start and end dates.");
-  // }
-
   return (
     <>
       <div className="hawker-contain">
-        <h1 className="hawker-name">{hawker.Name}</h1>
+        <h1 className="hawker-name">{cleaningHawker.name}</h1>
         <div className="hawker-info-content">
           <div className="hawker-img">
             <Image
-              src={hawker.PHOTOURL}
-              alt={hawker.Name}
+              src={cleaningHawker.photourl.toString()}
+              alt={cleaningHawker.name}
               fill={true}
               sizes="100vw"
             />
@@ -94,7 +67,7 @@ const HawkerPage = async () => {
           <div className="hawker-deets">
             <h2 className="hawker-location">
               <span className="font-bold">{"Location: "}</span>{" "}
-              {hawker.ADDRESS_MYENV}
+              {cleaningHawker.address_myenv}
             </h2>
             <h3 className="hawker-closure">
               <span className="font-bold">{"Hours: "}</span>
@@ -132,7 +105,9 @@ const HawkerPage = async () => {
             </h4>
             <p className="hawker-desc">
               <span className="font-bold">{"Description: "}</span>
-              <p className="leading-tight">{hawker.DESCRIPTION_MYENV}</p>
+              <p className="leading-tight">
+                {cleaningHawker.description_myenv}
+              </p>
             </p>
           </div>
         </div>

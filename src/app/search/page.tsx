@@ -3,16 +3,21 @@ import { fetchHawkerCentres } from "../../../utils";
 import { HawkerCard, Searchbar } from "../components";
 import { hawkerCentres } from "../constants";
 import { SearchProps } from "../../../types";
-import allHawkerCentres from "../constants/csvjson.json";
 
 const SearchPage = async ({ searchParams }: SearchProps) => {
   const query = searchParams.hawkerCentre || "";
 
+  // Hawker Centre Cleaning Dates API
+  const response = await fetchHawkerCentres();
+
+  const allHawkerCentres = response.result.records;
+
   const filteredHawkerCentres =
     query === ""
       ? allHawkerCentres
-      : allHawkerCentres.filter((hawker) =>
-          hawker.Name.toLowerCase()
+      : allHawkerCentres.filter((hawker: any) =>
+          hawker.name
+            .toLowerCase()
             .replace(/\s+/g, "")
             .includes(query.toLowerCase().replace(/\s+/g, ""))
         );
@@ -32,7 +37,7 @@ const SearchPage = async ({ searchParams }: SearchProps) => {
         <section>
           <div className="home__cars-wrapper">
             {filteredHawkerCentres?.map((hawker) => (
-              <HawkerCard key={hawker.Name} hawkerCentre={hawker} />
+              <HawkerCard key={hawker.name} hawkerCentre={hawker} />
             ))}
           </div>
         </section>
