@@ -61,8 +61,6 @@ const HawkerPage = async () => {
     }
   });
 
-  console.log(cleanDateList);
-
   // const now = new Date("2024-10-08");
 
   // if (
@@ -132,9 +130,6 @@ const HawkerPage = async () => {
                 {cleaningHawker.q4_cleaningenddate}
               </p>
             </h4>
-            <h5 className="hawker-crowd">
-              <span className="font-bold">{"Crowd Levels: "}</span>
-            </h5>
             <p className="hawker-desc">
               <span className="font-bold">{"Description: "}</span>
               <p className="leading-tight">{hawker.DESCRIPTION_MYENV}</p>
