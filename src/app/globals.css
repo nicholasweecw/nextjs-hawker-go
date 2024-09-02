@@ -17,7 +17,7 @@ nav {
 }
 
 .sign-in-btn {
-  @apply px-5 py-3 bg-blue-400 rounded-full text-white;
+  @apply px-5 py-3 bg-blue-400 rounded-full text-white text-xl;
 }
 
 .hero {
